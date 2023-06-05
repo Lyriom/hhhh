@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define NUM_ALUMNOS 23
 #define NUM_PROGRESOS 3
@@ -12,6 +14,7 @@ float calcularPromedio(int calificaciones[], int numCalificaciones) {
     float promedio = (float)suma / numCalificaciones;
     return promedio;
 }
+
 // Función para obtener la nota promedio del grupo para cada progreso
 void calcularPromedioGrupo(int calificaciones[][NUM_PROGRESOS], float promediosGrupo[]) {
     for (int i = 0; i < NUM_PROGRESOS; i++) {
@@ -34,18 +37,15 @@ int encontrarMejorAlumno(float promediosAlumnos[]) {
         }
     }
     return mejorAlumno;
-}
-int main() {
+} int main() {
     int calificaciones[NUM_ALUMNOS][NUM_PROGRESOS];
 
-    // Leer las calificaciones de los alumnos
+    // Generar calificaciones aleatorias para los alumnos
+    srand(time(NULL)); // Inicializar la semilla para la generación aleatoria
     for (int i = 0; i < NUM_ALUMNOS; i++) {
-        printf("Ingrese las calificaciones del alumno %d:\n", i + 1);
         for (int j = 0; j < NUM_PROGRESOS; j++) {
-            printf("Progreso %d: ", j + 1);
-            scanf("%d", &calificaciones[i][j]);
+            calificaciones[i][j] = rand() % 11; // Generar una calificación aleatoria entre 0 y 10
         }
-        printf("\n");
     }
 
     float promediosAlumnos[NUM_ALUMNOS];
@@ -71,5 +71,9 @@ int main() {
 
     printf("2- Nota promedio del grupo de estudiantes para cada progreso:\n");
     for (int i = 0; i < NUM_PROGRESOS; i++) {
-        printf("Progreso %d: %.2f\n"), i + 1;
-    }
+        printf("Progreso %d: %.2f\n");
+        }
+    printf("3- La nota mas alta fue:\n");
+    printf("%d"), mejorAlumno;
+   return 0;     
+}
