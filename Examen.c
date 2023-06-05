@@ -35,3 +35,41 @@ int encontrarMejorAlumno(float promediosAlumnos[]) {
     }
     return mejorAlumno;
 }
+int main() {
+    int calificaciones[NUM_ALUMNOS][NUM_PROGRESOS];
+
+    // Leer las calificaciones de los alumnos
+    for (int i = 0; i < NUM_ALUMNOS; i++) {
+        printf("Ingrese las calificaciones del alumno %d:\n", i + 1);
+        for (int j = 0; j < NUM_PROGRESOS; j++) {
+            printf("Progreso %d: ", j + 1);
+            scanf("%d", &calificaciones[i][j]);
+        }
+        printf("\n");
+    }
+
+    float promediosAlumnos[NUM_ALUMNOS];
+    float promediosGrupo[NUM_PROGRESOS];
+
+    // Calcular el promedio de calificaciones de cada alumno
+    for (int i = 0; i < NUM_ALUMNOS; i++) {
+        promediosAlumnos[i] = calcularPromedio(calificaciones[i], NUM_PROGRESOS);
+    }
+
+    // Calcular la nota promedio del grupo para cada progreso
+    calcularPromedioGrupo(calificaciones, promediosGrupo);
+
+    // Encontrar el alumno con el mayor promedio de calificación
+    int mejorAlumno = encontrarMejorAlumno(promediosAlumnos);
+
+    // Imprimir los resultados
+    printf("1- Promedio de calificaciones de cada alumno durante el semestre:\n");
+    for (int i = 0; i < NUM_ALUMNOS; i++) {
+        printf("Alumno %d: %.2f\n", i + 1, promediosAlumnos[i]);
+    }
+    printf("\n");
+
+    printf("2- Nota promedio del grupo de estudiantes para cada progreso:\n");
+    for (int i = 0; i < NUM_PROGRESOS; i++) {
+        printf("Progreso %d: %.2f\n"), i + 1;
+    }
